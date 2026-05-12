@@ -1,124 +1,84 @@
-# 💻 JavaFX Academic Projects
+# Expression Processor – Notation Conversion System
 
-A collection of JavaFX-based academic projects developed in Java, focusing on:
-
-- Data Structures
-- GUI Development
-- File Handling
-- Expression Processing
-- Dynamic Reporting
+A JavaFX‑based application for converting and evaluating mathematical expressions between **infix**, **postfix**, and **prefix** notations.  
+Supports both conventional arithmetic operators (`+`, `-`, `*`, `/`, `^`, `%`, `!`) and **user‑defined operators/operands** via external configuration files.
 
 ---
 
-# 🏥 1. Hospital Management System
+## Features
 
-## 📌 Description
+- **Convert between notations**  
+  Infix → Postfix / Prefix  
+  Postfix → Infix / Prefix  
+  Prefix → Infix / Postfix  
 
-The **Hospital Management System** is a JavaFX desktop application designed to manage hospital-related data such as:
+- **Evaluate expressions**  
+  Supports numbers, parentheses, and operators with precedence.  
+  Handles factorial (`!`) and power (`^`).
 
-- Patients
-- Conditions
-- Treatments
-- Medications
-- Symptoms
+- **Two operation modes**  
+  - *Conventional*: fixed operators and precedence (+, -, *, /, ^, %, !).  
+  - *Custom*: operators and precedence rules loaded from text files.
 
-The system uses a **custom doubly linked list** for data storage and management, supports **file-based data loading**, and generates **dynamic reports**.
+- **File‑based configuration**  
+  - **Language file** – defines allowed operands (e.g., `A B C D`).  
+  - **Precedence file** – defines custom operators and their priority (e.g., `+ 1`, `* 2`).
 
----
-
-## ✨ Features
-
-- 👤 Patient management module
-- 🩺 Condition management module
-- 💊 Treatment management module
-- 💉 Medication management module
-- 🤒 Symptom management module
-- 🔗 Custom doubly linked list storage
-- 📂 File-based data loading
-- 📊 Dynamic reporting
-- 🖥️ JavaFX graphical user interface
+- **Graphical user interface (JavaFX)**  
+  - Choose notation type, form, and operation.  
+  - Load / save language and precedence files.  
+  - Generate report files with conversion results.  
+  - Clear all fields with one button.
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies
 
-- Java
-- JavaFX
-- Custom Data Structures
-- File Handling
-
----
-
-## 🧠 Key Concepts
-
-- Doubly Linked List
-- Object-Oriented Programming (OOP)
-- GUI Development
-- Data Management
-- Dynamic Reports
+- Java 8+  
+- JavaFX (for GUI)  
+- Custom linked‑list stack and double‑linked list  
+- File I/O (FileChooser, PrintWriter, Files)
 
 ---
 
-# 🧮 2. Expression Processor
-## 🔄 Notation Conversion System
+## How to Run
 
-## 📌 Description
+1. **Clone or download** the project.
+2. Open the project in your IDE (Eclipse / IntelliJ / NetBeans).  
+   Make sure JavaFX is properly configured.
+3. Run the `Main` class (contains `Application.launch`).
+4. The main window will open.
 
-The **Expression Processor** is a configurable JavaFX application for processing mathematical expressions and converting between different expression notations.
-
-The system supports:
-
-- Infix expressions
-- Prefix expressions
-- Postfix expressions
-
-It also supports:
-
-- Custom operator precedence loaded from external files
-- Stack-based expression evaluation
+> *No external libraries are required.*
 
 ---
 
-## ✨ Features
+## Usage Example (Conventional Mode)
 
-- ➗ Infix expression processing
-- ➕ Prefix expression processing
-- ➖ Postfix expression processing
-- 🔄 Conversion between infix, prefix, and postfix
-- ⚙️ Custom operator precedence from external files
-- 📚 Stack-based expression evaluation
-- 🖥️ JavaFX graphical user interface
+| Expression (Infix)        | Operation           | Result                     |
+|---------------------------|---------------------|----------------------------|
+| `3 + 4 * 2`               | Infix → Postfix     | `3 4 2 * +`                |
+| `( 1 + 2 ) * 3`           | Infix → Prefix      | `* + 1 2 3`                |
+| `5 2 3 * +`               | Postfix → Infix     | `( 5 + ( 2 * 3 ) )`        |
+| `* + 1 2 3`               | Prefix → Infix      | `( ( 1 + 2 ) * 3 )`        |
+| `3 4 2 * +`               | Evaluate (Postfix)  | `11`                       |
 
----
+**Important:**  
+Expressions must be **space‑separated**.  
+- Correct: `3 + 4 * 2`  
+- Incorrect: `3+4*2`
 
-## 🛠️ Technologies Used
-
-- Java
-- JavaFX
-- Stack Data Structure
-- File Handling
+Parentheses are allowed only in infix form.
 
 ---
 
-## 🧠 Key Concepts
+## Custom Mode – Setup
 
-- Stack-based evaluation
-- Expression notation conversion
-- Operator precedence
-- Object-Oriented Programming (OOP)
-- GUI Development
+1. **Language file** (operands)  
+   Create a `.txt` file with operands separated by spaces.  
+   Example: `A B C D`  
+   Load it using *“Load Language File”*.
 
----
-
-# 📋 Projects Summary
-
-| Project | Main Focus | Technologies |
-|---|---|---|
-| 🏥 Hospital Management System | Hospital data management and reporting | Java, JavaFX, Doubly Linked List |
-| 🧮 Expression Processor | Expression conversion and evaluation | Java, JavaFX, Stack |
-
----
-
-# 👨‍💻 Author
-
-Developed by **Yazan Assi**
+2. **Precedence file** (custom operators)  
+   Each line: `operator priority`  
+   Example:  
